@@ -1,4 +1,4 @@
-package com.rusi.lbsci720.Activity;
+package com.rusi.lbsci720.Activity.Main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.rusi.lbsci720.Network.RXRetrofit;
 import com.rusi.lbsci720.R;
 
-public class ActivityMain extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
