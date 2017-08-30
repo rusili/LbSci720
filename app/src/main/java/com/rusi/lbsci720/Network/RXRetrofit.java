@@ -1,7 +1,7 @@
 package com.rusi.lbsci720.Network;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import com.rusi.lbsci720.Model.Post;
+import com.rusi.lbsci720.Model.Rss;
 import com.rusi.lbsci720.Model.StaticPosts;
 import com.rusi.lbsci720.Utility.Constants;
 
@@ -36,11 +36,11 @@ public class RXRetrofit {
 		Retrofit retrofit = provideRetrofit();
 		FeedAPI feedAPI = retrofit.create(FeedAPI.class);
 
-		Observable<Post[]> feedRXObservable = feedAPI.getPost();
+		Observable<Rss> feedRXObservable = feedAPI.getRss();
 		feedRXObservable.subscribeOn(Schedulers.newThread())
 			  .observeOn(AndroidSchedulers.mainThread())
-			  .subscribe((posts -> {
-				  StaticPosts.getStaticPosts().addPost(posts);
+			  .subscribe((rss -> {
+				  StaticPosts.getStaticPosts().addRss(rss);
 			  }));
 	}
 }

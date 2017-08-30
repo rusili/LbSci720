@@ -1,5 +1,7 @@
 package com.rusi.lbsci720.Model;
 
+import android.util.Log;
+
 public class StaticPosts {
 	private static StaticPosts staticPosts;
 
@@ -12,7 +14,7 @@ public class StaticPosts {
 		return staticPosts;
 	}
 
-	public void addPost (Post[] posts) {
-
+	public void addRss (Rss rss) {
+		Log.d("addRss: ", rss.getChannel().getItems().get(0).getTitle());
 	}
 }
