@@ -4,9 +4,8 @@
     <color name="colorPrimaryDark">#ff6600</color>
     <color name="colorAccent">#FFFFFF</color>
 
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
+    <!-- Advanced Recyclerview -->
+    <color name="bg_group_item_normal_state">#ffddffdd</color>
+    <color name="bg_group_item_normal_pressed_state">#ff99cc99</color>
 
-    <color name="peachLight">#fbc295</color>
-    <color name="peachMain">#ff6600</color>
 </resources>
