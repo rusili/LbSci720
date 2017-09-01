@@ -8,6 +8,7 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "item", strict = false)
 public class Item implements Parcelable {
+    private long id;
 
     @Element(name = "guid")
     public String guid;
@@ -25,7 +26,8 @@ public class Item implements Parcelable {
     public String link;
 
 
-    public Item(@Element(name = "title") String title,
+    public Item(
+            @Element(name = "title") String title,
                 @Element(name = "description") String description,
                 @Element(name = "pubDate") String pubDate,
                 @Element(name = "link") String link,

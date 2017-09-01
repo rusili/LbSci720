@@ -11,11 +11,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.h6ah4i.android.widget.advrecyclerview.expandable.RecyclerViewExpandableItemManager;
-import com.rusi.lbsci720.Activity.Main.AdvancedRecyclerView.FeedAdapter;
+import com.rusi.lbsci720.Dagger.DaggerApplication;
 import com.rusi.lbsci720.Network.RXRetrofit;
 import com.rusi.lbsci720.R;
 import com.rusi.lbsci720.Utility.Constants;
-import com.rusi.lbsci720.Utility.LbSci720;
 
 import javax.inject.Inject;
 
@@ -50,9 +49,9 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Vie
 		// Setup expandable feature and RecyclerView
 		RecyclerViewExpandableItemManager recyclerViewExpandableItemManager = new RecyclerViewExpandableItemManager(null);
 		recyclerViewFeed.setLayoutManager(new LinearLayoutManager(this));
-		recyclerViewFeed.setAdapter(recyclerViewExpandableItemManager.createWrappedAdapter(new FeedAdapter()));
 		// NOTE: need to disable change animations to ripple effect work properly
 		((SimpleItemAnimator) recyclerViewFeed.getItemAnimator()).setSupportsChangeAnimations(false);
+		mainPresenter.setAdvancedRecyclerviewAdapter(recyclerViewFeed, recyclerViewExpandableItemManager);
 
 		recyclerViewExpandableItemManager.attachRecyclerView(recyclerViewFeed);
 	}
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Vie
 	}
 
 	private void bind () {
-		((LbSci720) getApplication()).getAppComponent().inject(this);
+		((DaggerApplication) getApplication()).getAppComponent().inject(this);
 		ButterKnife.bind(this);
 	}
 

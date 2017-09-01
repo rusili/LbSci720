@@ -8,7 +8,7 @@
     android:foreground="?attr/selectableItemBackground">
 
     <TextView
-        android:id="@android:id/text1"
+        android:id="@+id/adv_rv_group_text1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"/>

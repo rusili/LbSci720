@@ -1,12 +1,8 @@
-package com.rusi.lbsci720.Utility;
+package com.rusi.lbsci720.Dagger;
 
 import android.app.Application;
 
-import com.rusi.lbsci720.Dagger.AppComponent;
-import com.rusi.lbsci720.Dagger.AppModule;
-import com.rusi.lbsci720.Dagger.DaggerAppComponent;
-
-public class LbSci720 extends Application{
+public class DaggerApplication extends Application{
 	private AppComponent appComponent;
 
 	@Override
