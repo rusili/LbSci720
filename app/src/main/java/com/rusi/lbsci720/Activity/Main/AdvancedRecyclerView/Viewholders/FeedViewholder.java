@@ -11,7 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FeedViewholder extends AbstractExpandableItemViewHolder {
-	@BindView(R.id.adv_rv_group_text1)
+	@BindView(R.id.adv_rv_group_date2)
 	TextView textView;
 
 	public FeedViewholder (View itemView) {

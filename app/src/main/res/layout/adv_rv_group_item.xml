@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/list_group_item_height"
     android:background="@drawable/adv_rv_background_group_item_normal_state"
     android:clickable="true"
-    android:foreground="?attr/selectableItemBackground">
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="horizontal"
+    >
 
     <TextView
-        android:id="@+id/adv_rv_group_text1"
+        android:id="@+id/adv_rv_group_date1"
+        android:layout_width="@dimen/list_group_item_height"
+        android:layout_height="match_parent"
+        android:background="@drawable/leak_canary_icon"
+        />
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"/>
+        >
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/adv_rv_group_date2"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/adv_rv_group_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/adv_rv_group_date2"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
