@@ -6,7 +6,7 @@ import org.simpleframework.xml.Root;
 @Root(name = "rss", strict = false)
 public class Rss {
     @Element(name = "channel")
-    private Channel channel;
+    private Channel channel = new Channel();
 
     public Channel getChannel ()
     {

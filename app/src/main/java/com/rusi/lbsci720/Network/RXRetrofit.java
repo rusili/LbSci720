@@ -40,7 +40,7 @@ public class RXRetrofit {
 		feedRXObservable.subscribeOn(Schedulers.newThread())
 			  .observeOn(AndroidSchedulers.mainThread())
 			  .subscribe((rss -> {
-				  StaticPosts.getStaticPosts().addRss(rss);
+				  StaticPosts.addRss(rss);
 			  }));
 	}
 }

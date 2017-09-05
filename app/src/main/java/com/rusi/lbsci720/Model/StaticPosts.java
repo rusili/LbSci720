@@ -2,40 +2,29 @@ package com.rusi.lbsci720.Model;
 
 import android.util.Log;
 
-import java.util.ArrayList;
+import com.rusi.lbsci720.Activity.Main.MainInterface;
+
 import java.util.List;
 
 public class StaticPosts {
-	private static StaticPosts staticPosts;
-	private Channel channel;
-	private List<Item> itemList = new ArrayList <>();
+	private static Rss staticRss = new Rss();
+	private static MainInterface.Presenter mainPresenter;
 
-	private StaticPosts(){
-		itemList.add(new Item("title", "description", "pubDate", "link", "guid"));
+	public StaticPosts(MainInterface.Presenter mainPresenter){
+		this.mainPresenter = mainPresenter;
 	}
 
-	public static StaticPosts getStaticPosts(){
-		if (staticPosts == null){
-			staticPosts = new StaticPosts();
-		}
-		return staticPosts;
-	}
-
-	public void addRss (Rss rss) {
+	public static void addRss (Rss rss) {
 		Log.d("addRss: ", rss.getChannel().getItems().get(0).getTitle());
-		RssParser(rss);
+		staticRss = rss;
+		mainPresenter.updateAdvancedRecyclerView();
 	}
 
-	private void RssParser (Rss rss) {
-		this.channel = rss.getChannel();
-		this.itemList = rss.getChannel().getItems();
+	public static Channel getChannel(){
+		return staticRss.getChannel();
 	}
 
-	public Channel getChannel(){
-		return  this.channel;
-	}
-
-	public List<Item> getItemList(){
-		return this.itemList;
+	public static  List<Item> getItems(){
+		return staticRss.getChannel().getItems();
 	}
 }

@@ -23,4 +23,6 @@
 
     <dimen name="list_item_height">64dp</dimen>
     <dimen name="list_group_item_height">96dp</dimen>
+    <dimen name="list_group_item_circle_padding">12dp</dimen>
+    <dimen name="list_group_item_date_fontsize">18sp</dimen>
 </resources>

@@ -16,19 +16,26 @@ import java.util.List;
 public class FeedAdapter extends AbstractExpandableItemAdapter<FeedViewholder, DescriptionViewholder> {
 	private List<Item> itemList = new ArrayList <>();
 
-	public FeedAdapter(List<Item> itemList) {
+	public FeedAdapter() {
 		setHasStableIds(true); // this is required for expandable feature.
+	}
+
+	public void setItemList(List<Item> itemList){
 		this.itemList = itemList;
+	}
+
+	public List <Item> getItemList () {
+		return itemList;
 	}
 
 	@Override
 	public long getGroupId (int groupPosition) {
-		return 0;
+		return groupPosition;
 	}
 
 	@Override
 	public long getChildId (int groupPosition, int childPosition) {
-		return 0;
+		return groupPosition;
 	}
 
 	@Override

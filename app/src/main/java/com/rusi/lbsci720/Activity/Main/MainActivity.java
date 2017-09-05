@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.h6ah4i.android.widget.advrecyclerview.expandable.RecyclerViewExpandableItemManager;
 import com.rusi.lbsci720.Dagger.DaggerApplication;
-import com.rusi.lbsci720.Network.RXRetrofit;
+import com.rusi.lbsci720.Model.StaticPosts;
 import com.rusi.lbsci720.R;
 import com.rusi.lbsci720.Utility.Constants;
 
@@ -36,16 +36,23 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Vie
 		setContentView(R.layout.activity_main);
 
 		initialize();
-		test();
 	}
 
 	private void initialize () {
+		((DaggerApplication) getApplication()).getAppComponent().inject(this);
+		StaticPosts staticPosts = new StaticPosts(mainPresenter);
+
 		bind();
 		setOnClickListeners();
 		setAdvancedRecyclerview();
+		retrieveData();
 	}
 
-	private void setAdvancedRecyclerview () {
+	private void retrieveData () {
+		mainPresenter.retrieveData();
+	}
+
+	public void setAdvancedRecyclerview () {
 		// Setup expandable feature and RecyclerView
 		RecyclerViewExpandableItemManager recyclerViewExpandableItemManager = new RecyclerViewExpandableItemManager(null);
 		recyclerViewFeed.setLayoutManager(new LinearLayoutManager(this));
@@ -61,12 +68,8 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Vie
 	}
 
 	private void bind () {
-		((DaggerApplication) getApplication()).getAppComponent().inject(this);
 		ButterKnife.bind(this);
-	}
-
-	private void test(){
-		RXRetrofit.getRxRetrofit().getFeed();
+		mainPresenter.bind(this);
 	}
 
 	@Override
@@ -82,5 +85,11 @@ public class MainActivity extends AppCompatActivity implements MainInterface.Vie
 		Uri uriUrl = Uri.parse(Constants.Network.BASE_URL);
 		Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
 		startActivity(launchBrowser);
+	}
+
+	@Override
+	protected void onStop () {
+		mainPresenter.unbind();
+		super.onStop();
 	}
 }
